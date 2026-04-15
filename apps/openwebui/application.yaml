@@ -23,6 +23,8 @@ spec:
           storageClass: local-path
         ingress:
           enabled: false
+        ollama:
+          enabled: false
         service:
           type: NodePort
           port: 80
