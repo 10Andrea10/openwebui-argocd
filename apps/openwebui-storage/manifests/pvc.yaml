@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: openwebui-nfs-pvc
+  namespace: open-webui
+spec:
+  volumeName: openwebui-nfs-pv
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-openwebui
+  resources:
+    requests:
+      storage: 2Gi

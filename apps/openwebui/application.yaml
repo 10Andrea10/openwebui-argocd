@@ -9,6 +9,7 @@ spec:
     repoURL: https://helm.openwebui.com/
     chart: open-webui
     targetRevision: 13.3.1
+    # https://artifacthub.io/packages/helm/open-webui/open-webui
     helm:
       releaseName: open-webui
       valuesObject:
@@ -17,10 +18,9 @@ spec:
           tag: "v0.8.12"
         persistence:
           enabled: true
-          size: 10Gi
+          existingClaim: openwebui-nfs-pvc
           accessModes:
-            - ReadWriteOnce
-          storageClass: local-path
+            - ReadWriteMany
         ingress:
           enabled: false
         ollama:

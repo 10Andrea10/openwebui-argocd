@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openwebui-storage
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/10Andrea10/openwebui-argocd.git
+    targetRevision: main
+    path: apps/openwebui-storage/manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: open-webui
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
