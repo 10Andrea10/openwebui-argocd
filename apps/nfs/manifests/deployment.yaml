@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfs-server
+  namespace: nfs
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: nfs-server
+  template:
+    metadata:
+      labels:
+        app: nfs-server
+    spec:
+      containers:
+        - name: nfs-server
+          image: itsthenetwork/nfs-server-alpine:12
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: SHARED_DIRECTORY
+              value: /exports
+            - name: SYNC
+              value: "true"
+          ports:
+            - name: nfs
+              containerPort: 2049
+              protocol: TCP
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: nfs-data
+              mountPath: /exports
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      volumes:
+        - name: nfs-data
+          persistentVolumeClaim:
+            claimName: nfs-data

@@ -1,21 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: openwebui-bootstrap
+  name: nfs-server
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/10Andrea10/openwebui-argocd.git
     targetRevision: main
-    path: apps
-    directory:
-      recurse: true
-      include: "*/application.yaml"
+    path: apps/nfs/manifests
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: nfs
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
