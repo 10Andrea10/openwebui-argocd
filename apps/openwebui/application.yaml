@@ -24,10 +24,7 @@ spec:
         ingress:
           enabled: false
         ollama:
-          enabled: true
-          persistentVolume:
-            enabled: true
-            size: 10Gi
+          enabled: false
         service:
           type: NodePort
           port: 80
