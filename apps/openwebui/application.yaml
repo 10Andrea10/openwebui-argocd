@@ -32,6 +32,7 @@ spec:
         extraEnvVars:
           - name: WEBUI_SECRET_KEY
             value: "random_secret_for_token_generation"
+        databaseUrl: "postgresql://openwebui:ciaociaociao@postgres-cluster-rw.cnpg-database.svc:5432/openwebui?sslmode=disable"
   destination:
     server: https://kubernetes.default.svc
     namespace: open-webui
