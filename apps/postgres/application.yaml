@@ -1,0 +1,105 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg-operator
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  project: default
+  source:
+    repoURL: https://cloudnative-pg.github.io/charts
+    chart: cloudnative-pg
+    targetRevision: 0.28.0
+    # https://artifacthub.io/packages/helm/cloudnative-pg/cloudnative-pg
+    helm:
+      releaseName: cnpg
+      valuesObject:
+        image:
+          tag: "1.29.0"
+        crds:
+          create: true
+        config:
+          clusterWide: true
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cnpg-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg-secrets
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/10Andrea10/openwebui-argocd.git
+    targetRevision: main
+    path: apps/postgres/manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cnpg-database
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg-cluster
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  source:
+    repoURL: https://cloudnative-pg.github.io/charts
+    chart: cluster
+    targetRevision: 0.6.0
+    # https://artifacthub.io/packages/helm/cloudnative-pg/cluster
+    helm:
+      releaseName: postgres
+      valuesObject:
+        type: postgresql
+        mode: standalone
+
+        version:
+          postgresql: "16"
+
+        cluster:
+          instances: 1
+          storage:
+            size: 8Gi
+          walStorage:
+            enabled: false
+            size: 1Gi
+          postgresql:
+            initdb:
+              database: openwebui
+              owner: openwebui
+              secret:
+                name: openwebui-db-app
+
+        backups:
+          enabled: false
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cnpg-database
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
