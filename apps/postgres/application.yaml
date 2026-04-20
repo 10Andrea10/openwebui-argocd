@@ -51,12 +51,11 @@ spec:
           walStorage:
             enabled: false
             size: 1Gi
-          postgresql:
-            initdb:
-              database: openwebui
-              owner: openwebui
-              secret:
-                name: openwebui-db-app
+          initdb:
+            database: openwebui
+            owner: openwebui
+            secret:
+              name: openwebui-db-app
 
         backups:
           enabled: false
