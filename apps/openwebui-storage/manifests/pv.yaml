@@ -12,5 +12,5 @@ spec:
   mountOptions:
     - nfsvers=4.1
   nfs:
-    server: 10.154.27.105
+    server: 10.43.200.50
     path: /

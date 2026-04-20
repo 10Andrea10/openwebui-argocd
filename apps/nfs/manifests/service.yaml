@@ -4,6 +4,8 @@ metadata:
   name: nfs-server
   namespace: nfs
 spec:
+  # Keep a stable in-cluster IP so the PV does not depend on a changing Pod IP.
+  clusterIP: 10.43.200.50
   selector:
     app: nfs-server
   ports:
