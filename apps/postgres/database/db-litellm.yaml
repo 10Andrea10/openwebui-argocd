@@ -1,0 +1,13 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: db-litellm
+  namespace: cnpg-database
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  databaseReclaimPolicy: delete
+  name: litellm
+  owner: litellm
+  cluster:
+    name: postgres-cluster
