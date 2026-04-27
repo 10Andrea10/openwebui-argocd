@@ -27,6 +27,8 @@ spec:
           enabled: false
         ollama:
           enabled: false
+        pipelines:
+          enabled: false
         service:
           type: NodePort
           port: 80
