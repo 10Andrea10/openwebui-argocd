@@ -15,7 +15,7 @@ spec:
     helm:
       releaseName: open-webui
       valuesObject:
-        replicaCount: 2
+        replicaCount: 1
         resources:
           limits:
             cpu: 1000m
