@@ -12,7 +12,7 @@ spec:
   sources:
     - repoURL: docker.litellm.ai/berriai
       chart: litellm-helm
-      targetRevision: 1.82.3
+      targetRevision: 1.83.10-stable 
       helm:
         releaseName: litellm
         valueFiles:
