@@ -1,0 +1,35 @@
+replicas: 1
+
+rbac:
+  create: false
+
+serviceAccount:
+  create: false
+
+testFramework:
+  enabled: false
+
+adminUser: andrea
+adminPassword: andrea
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 3000
+  nodePort: 30300
+
+ingress:
+  enabled: false
+
+persistence:
+  type: pvc
+  enabled: true
+  accessModes:
+    - ReadWriteOnce
+  size: 4Gi
+
+grafana.ini:
+  analytics:
+    check_for_updates: false
+    check_for_plugin_updates: false
+    reporting_enabled: false
