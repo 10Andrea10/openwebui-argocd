@@ -142,10 +142,10 @@ ingress:
 # masterkey: changeit
 
 # if set, use this secret for the master key; otherwise, autogenerate a new one
-masterkeySecretName: "litellm-master-key-manual"
+masterkeySecretName: litellm-master-key-manual
 
 # if set, use this secret key for the master key; otherwise, use the default key
-masterkeySecretKey: "masterkey"
+masterkeySecretKey: masterkey
 
 proxyConfigMap:
   # when true, creates a new configmap
