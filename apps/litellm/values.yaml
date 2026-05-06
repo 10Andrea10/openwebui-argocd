@@ -335,7 +335,9 @@ migrationJob:
       enabled: false
 
 # Additional environment variables to be added to the deployment as a map of key-value pairs
-envVars: {}
+envVars: {
+  "LITELLM_LOG" : "debug",
+}
 
 # USE_DDTRACE: "true"
 # Additional environment variables to be added to the deployment as a list of k8s env vars
