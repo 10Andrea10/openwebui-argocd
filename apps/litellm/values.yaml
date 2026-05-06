@@ -71,7 +71,9 @@ securityContext:
 #  pod as environment variables.  These secrets can then be referenced in the
 #  configuration file (or "litellm" ConfigMap) with `os.environ/<Env Var Name>`
 environmentSecrets:
-  []
+  [
+    litellm-secret
+  ]
   # - litellm-env-secret
 
 # A list of Kubernetes ConfigMap objects that will be exported to the LiteLLM proxy
