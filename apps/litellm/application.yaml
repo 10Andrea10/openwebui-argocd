@@ -20,6 +20,9 @@ spec:
     - repoURL: https://github.com/10Andrea10/openwebui-argocd.git
       targetRevision: main
       ref: values
+    - repoURL: https://github.com/10Andrea10/openwebui-argocd.git
+      targetRevision: main
+      path: apps/litellm/manifests
   destination:
     server: https://kubernetes.default.svc
     namespace: litellm
