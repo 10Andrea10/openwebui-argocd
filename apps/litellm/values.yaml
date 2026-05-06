@@ -258,7 +258,7 @@ db:
   database: litellm
   url: postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@$(DATABASE_HOST)/$(DATABASE_NAME)
   secret:
-    name: s-zvlpt
+    name: postgres-credentials
     usernameKey: username
     passwordKey: password
     # Optional: when set, DATABASE_HOST will be sourced from this secret key instead of db.endpoint
