@@ -175,6 +175,8 @@ proxy_config:
     store_model_in_db: true
   litellm_settings:
     check_provider_endpoint: true
+    callbacks:
+    - prometheus
 
 resources:
   {}
