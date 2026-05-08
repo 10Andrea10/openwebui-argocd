@@ -165,6 +165,7 @@ proxy_config:
       litellm_params:
         model: fake-model
         api_key: eXaMpLeOnLy
+        api_base: https://exampleopenaiendpoint-production.up.railway.app/
   general_settings:
     master_key: os.environ/PROXY_MASTER_KEY
     store_model_in_db: true
