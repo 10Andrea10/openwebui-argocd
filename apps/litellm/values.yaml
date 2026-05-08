@@ -160,7 +160,7 @@ proxyConfigMap:
 #  Reference: https://docs.litellm.ai/docs/proxy/configs
 proxy_config:
   model_list:
-    # At least one model must exist for the proxy to start.
+    - model_name: fake-openai-endpoint
       litellm_params:
         model: openai/fake
         api_key: fake-key
