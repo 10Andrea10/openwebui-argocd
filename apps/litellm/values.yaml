@@ -333,7 +333,7 @@ migrationJob:
 
 # Additional environment variables to be added to the deployment as a map of key-value pairs
 envVars: {
-  "LITELLM_LOG" : "debug",
+  "LITELLM_LOG" : "info",
 }
 
 # USE_DDTRACE: "true"
