@@ -51,8 +51,5 @@ spec:
     server: https://kubernetes.default.svc
     namespace: open-webui
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
       - CreateNamespace=true

@@ -10,7 +10,7 @@ spec:
   sources:
     - repoURL: docker.litellm.ai/berriai
       chart: litellm-helm
-      targetRevision: 1.83.10-stable 
+      targetRevision: 1.84.0
       helm:
         releaseName: litellm
         valueFiles:
@@ -25,9 +25,5 @@ spec:
     server: https://kubernetes.default.svc
     namespace: litellm
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: true
     syncOptions:
       - CreateNamespace=true

@@ -17,9 +17,6 @@ spec:
     server: https://kubernetes.default.svc
     namespace: cnpg-database
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
       - CreateNamespace=true
 ---
@@ -73,9 +70,6 @@ spec:
     server: https://kubernetes.default.svc
     namespace: cnpg-database
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
       - CreateNamespace=true
 ---
@@ -98,8 +92,5 @@ spec:
     server: https://kubernetes.default.svc
     namespace: cnpg-database
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
       - CreateNamespace=true
