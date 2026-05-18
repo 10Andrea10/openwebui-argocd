@@ -21,6 +21,7 @@ proxy_config:
     check_provider_endpoint: true
     callbacks:
       - prometheus
+    require_auth_for_metrics_endpoint: false
 
 db:
   useExisting: true
