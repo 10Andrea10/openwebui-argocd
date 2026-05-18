@@ -1,6 +1,9 @@
 environmentSecrets:
   - litellm-secret
 
+image:
+  tag: "1.84.0"
+
 masterkeySecretName: litellm-master-key-manual
 masterkeySecretKey: masterkey
 
